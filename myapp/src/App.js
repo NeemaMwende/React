@@ -5,8 +5,9 @@ import HotelApp from './HotelApp';
 function App() {
   return (
     <div className="App">
+      
       <HotelApp />
-      Hello There
+      
     </div>
   );
 }
