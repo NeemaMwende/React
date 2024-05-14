@@ -200,7 +200,9 @@ function App() {
               name="firstName"
               placeholder="First name"
               value={firstName}
-              onChange={handleChange}
+              onChange={(e) => { 
+                setFirstName(e.target.value); 
+              }} 
             />
           </div>
           <div className="Field">
@@ -209,7 +211,9 @@ function App() {
               name="lastName"
               placeholder="Last name"
               value={lastName}
-              onChange={handleChange}
+              onChange={(e) => { 
+                setLastName(e.target.value); 
+              }} 
             />
           </div>
           <div className="Field">
@@ -220,7 +224,9 @@ function App() {
               name="email"
               placeholder="Email address"
               value={email}
-              onChange={handleChange}
+              onChange={(e) => { 
+                setEmail(e.target.value); 
+              }} 
             />
           </div>
           <div className="Field">
@@ -232,18 +238,22 @@ function App() {
               name="password"
               placeholder="Password"
               value={password.value}
-              onChange={handleChange}
-              onBlur={handleBlur}
+              onChange={(e) => { 
+                setPassword( {...password, value: e.target.value}); 
+              }} 
+              onBlur={() => { 
+                setPassword({ ...password, isTouched: true }); 
+              }} 
             />
             {password.isTouched && password.value.length < 8 && (
               <PasswordErrorMessage />
-            )}
+            ) : null}
           </div>
           <div className="Field">
             <label htmlFor="role">
               Role <sup>*</sup>
             </label>
-            <select name="role" value={role} onChange={handleChange}>
+            <select name="role" value={role} onChange={(e) => setRole(e.target.value)}>
               <option value="role">Role</option>
               <option value="individual">Individual</option>
               <option value="business">Business</option>
