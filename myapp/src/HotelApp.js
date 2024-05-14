@@ -1,55 +1,54 @@
-// HotelApp.js
-import React from 'react';
+// // HotelApp.js
+// import React from 'react';
 
-const foods = [
-    {
-        id: "1",
-        title: "Beef Stew with rice",
-        image: "",
-        description: "Mind blowing taste",
-        price: "$100.00"
-    },
-    {
-        id: "2",
-        title: "Ugali Meat",
-        image: "data:image/jpeg;base64,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",
-        description: "Mind blowing taste",
-        price: "$150.00"
-    },
-    {
-        id: "3",
-        title: "Cheesburger and waffles",
-        image: "",
-        description: "Mind blowing taste",
-        price: "$200.00"
-    }
-];
-
-
-const HotelApp = () => {
-  return (
-    <div>
-      <h1>Hotel Name</h1>
-      <div className="food-list">
-        {foods.map(food => (
-          <div key={food.id} className="food-item">
-            <h2>{food.title}</h2>
-            {/* <img src={require(`./Images/${food.image}`).default} alt={food.title} /> */}
-            <p>{food.description}</p>
-            <p>{food.price}</p>
-          </div>
-        ))}
-        {/* const topDesserts = foods.map(dessert => {
-            return {
-                content: `${dessert.title} - ${dessert.description}`,
-                price: dessert.price,
-            }
-        });
-        console.log(topDesserts); */}
-      </div>
-    </div>
-  );
-};
+// const foods = [
+//     {
+//         id: "1",
+//         title: "Beef Stew with rice",
+//         image: "",
+//         description: "Mind blowing taste",
+//         price: "$100.00"
+//     },
+//     {
+//         id: "2",
+//         title: "Ugali Meat",
+//         description: "Mind blowing taste",
+//         price: "$150.00"
+//     },
+//     {
+//         id: "3",
+//         title: "Cheesburger and waffles",
+//         image: "",
+//         description: "Mind blowing taste",
+//         price: "$200.00"
+//     }
+// ];
 
 
-export default HotelApp;
+// const HotelApp = () => {
+//   return (
+//     <div>
+//       <h1>Hotel Name</h1>
+//       <div className="food-list">
+//         {foods.map(food => (
+//           <div key={food.id} className="food-item">
+//             <h2>{food.title}</h2>
+//             {/* <img src={require(`./Images/${food.image}`).default} alt={food.title} /> */}
+//             <p>{food.description}</p>
+//             <p>{food.price}</p>
+//           </div>
+//         ))}
+//         {/* const topDesserts = foods.map(dessert => {
+//             return {
+//                 content: `${dessert.title} - ${dessert.description}`,
+//                 price: dessert.price,
+//             }
+//         });
+//         console.log(topDesserts); */}
+//       </div>
+//     </div>
+//   );
+// };
+
+
+// export default HotelApp;
