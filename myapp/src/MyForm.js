@@ -22,6 +22,7 @@ function MyForm() {
 
   return (
     <form onSubmit={handleSubmit}>
+      <fieldset>
       <div>
         <label htmlFor="name">Name:</label>
         <input
@@ -46,7 +47,11 @@ function MyForm() {
         </select>
       </div>
       <button type="submit">Submit</button>
+      </fieldset>
     </form>
+
+    //uncontrolled form in react
+
   );
 }
 

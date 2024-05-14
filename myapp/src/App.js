@@ -14,6 +14,7 @@
 
 // export default App;
 
+import { useState } from "react";
 import "./App.css";
 import DessertsList from "./DessertsList";
 import MyForm from "./MyForm";
@@ -46,12 +47,30 @@ const desserts = [
 // })
 
 function App() {
+  const [name, setName] = useState("");
+
+  const handleSubmit = () => {
+    console.log("form submitted");
+  }
+
   return (
     <div className="App">
       <h2>List of low calorie desserts:</h2>
       <DessertsList data={desserts} />
 
+      {/* //uncontrolled form  */}
       <MyForm />
+      <h2>List of low calorie desserts:</h2>
+      <DessertsList data={desserts} />
+      <form onSubmit={handleSubmit}> 
+        <fieldset>
+          <div className="field">
+            <label>Name:</label>
+            <input type="text" placeholder="Name" name="name" value={name} onChange={(e) => setName(e.target.value)}/>
+          </div>
+          <button type="submit">Submit</button>
+        </fieldset>
+      </form>
     </div>
   );
 }
