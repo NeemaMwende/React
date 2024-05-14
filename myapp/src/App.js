@@ -113,11 +113,17 @@ import { validateEmail } from "./utils";
 
 //NEW CODE
 
+
 const PasswordErrorMessage = () => {
   return (
     <p className="FieldError">Password should have at least 8 characters</p>
   );
 };
+
+// function validateEmail(email) {
+//   const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+//   return re.test(String(email).toLowerCase());
+// }
 
 function App() {
   const [firstName, setFirstName] = useState("");
@@ -130,17 +136,55 @@ function App() {
   const [role, setRole] = useState("role");
 
   const getIsFormValid = () => {
-    // Implement this function
-    return true;
+    return (
+      firstName !== "" &&
+      validateEmail(email) &&
+      password.value.length >= 8 &&
+      (role === "individual" || role === "business")
+    );
   };
 
   const clearForm = () => {
-    // Implement this function
+    setFirstName("");
+    setLastName("");
+    setEmail("");
+    setPassword({ value: "", isTouched: false });
+    setRole("role");
   };
 
-  const handleSubmit = () => {
-    alert("Account created!");
-    clearForm();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (getIsFormValid()) {
+      alert("Account created!");
+      clearForm();
+    }
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    switch (name) {
+      case "firstName":
+        setFirstName(value);
+        break;
+      case "lastName":
+        setLastName(value);
+        break;
+      case "email":
+        setEmail(value);
+        break;
+      case "password":
+        setPassword((prevState) => ({ ...prevState, value }));
+        break;
+      case "role":
+        setRole(value);
+        break;
+      default:
+        break;
+    }
+  };
+
+  const handleBlur = () => {
+    setPassword((prevState) => ({ ...prevState, isTouched: true }));
   };
 
   return (
@@ -149,32 +193,57 @@ function App() {
         <fieldset>
           <h2>Sign Up</h2>
           <div className="Field">
-            <label>
+            <label htmlFor="firstName">
               First name <sup>*</sup>
             </label>
-            <input placeholder="First name" />
+            <input
+              name="firstName"
+              placeholder="First name"
+              value={firstName}
+              onChange={handleChange}
+            />
           </div>
           <div className="Field">
-            <label>Last name</label>
-            <input placeholder="Last name" />
+            <label htmlFor="lastName">Last name</label>
+            <input
+              name="lastName"
+              placeholder="Last name"
+              value={lastName}
+              onChange={handleChange}
+            />
           </div>
           <div className="Field">
-            <label>
+            <label htmlFor="email">
               Email address <sup>*</sup>
             </label>
-            <input placeholder="Email address" />
+            <input
+              name="email"
+              placeholder="Email address"
+              value={email}
+              onChange={handleChange}
+            />
           </div>
           <div className="Field">
-            <label>
+            <label htmlFor="password">
               Password <sup>*</sup>
             </label>
-            <input placeholder="Password" />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={password.value}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+            {password.isTouched && password.value.length < 8 && (
+              <PasswordErrorMessage />
+            )}
           </div>
           <div className="Field">
-            <label>
+            <label htmlFor="role">
               Role <sup>*</sup>
             </label>
-            <select>
+            <select name="role" value={role} onChange={handleChange}>
               <option value="role">Role</option>
               <option value="individual">Individual</option>
               <option value="business">Business</option>
@@ -190,3 +259,5 @@ function App() {
 }
 
 export default App;
+
+
