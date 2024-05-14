@@ -48,9 +48,24 @@ const desserts = [
 
 function App() {
   const [name, setName] = useState("");
+  const [score, setScore] = useState("10");
+  const [comment, setComment] = useState("");
 
-  const handleSubmit = () => {
-    console.log("form submitted");
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   setName("");
+  //   console.log("form submitted");
+  // }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (Number(score) <= 5 && comment.length <=10) 
+      {
+        alert("Please provide a comment explaining why the experience");
+      }
+      console.log("Form submitted!");
+      setComment("");
+      setScore("10");
   }
 
   return (
@@ -65,8 +80,25 @@ function App() {
       <form onSubmit={handleSubmit}> 
         <fieldset>
           <div className="field">
-            <label>Name:</label>
-            <input type="text" placeholder="Name" name="name" value={name} onChange={(e) => setName(e.target.value)}/>
+            <label htmlFor="name">Name:</label>
+            <input id="name" type="text" placeholder="Name" name="name" value={name} onChange={(e) => setName(e.target.value)}/>
+          </div>
+          <button disabled={!name} type="submit">Submit</button>
+        </fieldset>
+      </form>
+
+    <h2>Please give us a review </h2>
+    <h4>Your Welcome</h4>
+      <form onSubmit={handleSubmit}>
+        <fieldset>
+          <h2>Feedback Form</h2>
+          <div className="Field">
+            <label>Score: {score}</label>
+            <input type="range" min={0} max={10} value={score} onChange={e => setScore(e.target.value)}/>
+          </div>
+          <div className="Field">
+            <label htmlFor="comment">Comment</label>
+            <textarea value={comment} onChange={e => setComment(e.target.value)} />
           </div>
           <button type="submit">Submit</button>
         </fieldset>
