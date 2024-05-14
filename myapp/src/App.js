@@ -16,7 +16,7 @@
 
 import { useState } from "react";
 import "./App.css";
-import { validateEmail } from "./utils";
+// import { validateEmail } from "./utils";
 // import DessertsList from "./DessertsList";
 // import MyForm from "./MyForm";
 
@@ -114,160 +114,160 @@ import { validateEmail } from "./utils";
 //NEW CODE
 
 
-const PasswordErrorMessage = () => {
-  return (
-    <p className="FieldError">Password should have at least 8 characters</p>
-  );
-};
+// const PasswordErrorMessage = () => {
+//   return (
+//     <p className="FieldError">Password should have at least 8 characters</p>
+//   );
+// };
 
 // function validateEmail(email) {
 //   const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 //   return re.test(String(email).toLowerCase());
 // }
 
-function App() {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState({
-    value: "",
-    isTouched: false,
-  });
-  const [role, setRole] = useState("role");
+// function App() {
+//   const [firstName, setFirstName] = useState("");
+//   const [lastName, setLastName] = useState("");
+//   const [email, setEmail] = useState("");
+//   const [password, setPassword] = useState({
+//     value: "",
+//     isTouched: false,
+//   });
+//   const [role, setRole] = useState("role");
 
-  const getIsFormValid = () => {
-    return (
-      firstName !== "" &&
-      validateEmail(email) &&
-      password.value.length >= 8 &&
-      (role === "individual" || role === "business")
-    );
-  };
+//   const getIsFormValid = () => {
+//     return (
+//       firstName !== "" &&
+//       validateEmail(email) &&
+//       password.value.length >= 8 &&
+//       (role === "individual" || role === "business")
+//     );
+//   };
 
-  const clearForm = () => {
-    setFirstName("");
-    setLastName("");
-    setEmail("");
-    setPassword({ value: "", isTouched: false });
-    setRole("role");
-  };
+//   const clearForm = () => {
+//     setFirstName("");
+//     setLastName("");
+//     setEmail("");
+//     setPassword({ value: "", isTouched: false });
+//     setRole("role");
+//   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (getIsFormValid()) {
-      alert("Account created!");
-      clearForm();
-    }
-  };
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     if (getIsFormValid()) {
+//       alert("Account created!");
+//       clearForm();
+//     }
+//   };
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    switch (name) {
-      case "firstName":
-        setFirstName(value);
-        break;
-      case "lastName":
-        setLastName(value);
-        break;
-      case "email":
-        setEmail(value);
-        break;
-      case "password":
-        setPassword((prevState) => ({ ...prevState, value }));
-        break;
-      case "role":
-        setRole(value);
-        break;
-      default:
-        break;
-    }
-  };
+//   const handleChange = (e) => {
+//     const { name, value } = e.target;
+//     switch (name) {
+//       case "firstName":
+//         setFirstName(value);
+//         break;
+//       case "lastName":
+//         setLastName(value);
+//         break;
+//       case "email":
+//         setEmail(value);
+//         break;
+//       case "password":
+//         setPassword((prevState) => ({ ...prevState, value }));
+//         break;
+//       case "role":
+//         setRole(value);
+//         break;
+//       default:
+//         break;
+//     }
+//   };
 
-  const handleBlur = () => {
-    setPassword((prevState) => ({ ...prevState, isTouched: true }));
-  };
+//   const handleBlur = () => {
+//     setPassword((prevState) => ({ ...prevState, isTouched: true }));
+//   };
 
-  return (
-    <div className="App">
-      <form onSubmit={handleSubmit}>
-        <fieldset>
-          <h2>Sign Up</h2>
-          <div className="Field">
-            <label htmlFor="firstName">
-              First name <sup>*</sup>
-            </label>
-            <input
-              name="firstName"
-              placeholder="First name"
-              value={firstName}
-              onChange={(e) => { 
-                setFirstName(e.target.value); 
-              }} 
-            />
-          </div>
-          <div className="Field">
-            <label htmlFor="lastName">Last name</label>
-            <input
-              name="lastName"
-              placeholder="Last name"
-              value={lastName}
-              onChange={(e) => { 
-                setLastName(e.target.value); 
-              }} 
-            />
-          </div>
-          <div className="Field">
-            <label htmlFor="email">
-              Email address <sup>*</sup>
-            </label>
-            <input
-              name="email"
-              placeholder="Email address"
-              value={email}
-              onChange={(e) => { 
-                setEmail(e.target.value); 
-              }} 
-            />
-          </div>
-          <div className="Field">
-            <label htmlFor="password">
-              Password <sup>*</sup>
-            </label>
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              value={password.value}
-              onChange={(e) => { 
-                setPassword( {...password, value: e.target.value}); 
-              }} 
-              onBlur={() => { 
-                setPassword({ ...password, isTouched: true }); 
-              }} 
-            />
-            {password.isTouched && password.value.length < 8 && (
-              <PasswordErrorMessage />
-            ) : null}
-          </div>
-          <div className="Field">
-            <label htmlFor="role">
-              Role <sup>*</sup>
-            </label>
-            <select name="role" value={role} onChange={(e) => setRole(e.target.value)}>
-              <option value="role">Role</option>
-              <option value="individual">Individual</option>
-              <option value="business">Business</option>
-            </select>
-          </div>
-          <button type="submit" disabled={!getIsFormValid()}>
-            Create account
-          </button>
-        </fieldset>
-      </form>
-    </div>
-  );
-}
+//   return (
+//     <div className="App">
+//       <form onSubmit={handleSubmit}>
+//         <fieldset>
+//           <h2>Sign Up</h2>
+//           <div className="Field">
+//             <label htmlFor="firstName">
+//               First name <sup>*</sup>
+//             </label>
+//             <input
+//               name="firstName"
+//               placeholder="First name"
+//               value={firstName}
+//               onChange={(e) => { 
+//                 setFirstName(e.target.value); 
+//               }} 
+//             />
+//           </div>
+//           <div className="Field">
+//             <label htmlFor="lastName">Last name</label>
+//             <input
+//               name="lastName"
+//               placeholder="Last name"
+//               value={lastName}
+//               onChange={(e) => { 
+//                 setLastName(e.target.value); 
+//               }} 
+//             />
+//           </div>
+//           <div className="Field">
+//             <label htmlFor="email">
+//               Email address <sup>*</sup>
+//             </label>
+//             <input
+//               name="email"
+//               placeholder="Email address"
+//               value={email}
+//               onChange={(e) => { 
+//                 setEmail(e.target.value); 
+//               }} 
+//             />
+//           </div>
+//           <div className="Field">
+//             <label htmlFor="password">
+//               Password <sup>*</sup>
+//             </label>
+//             <input
+//               type="password"
+//               name="password"
+//               placeholder="Password"
+//               value={password.value}
+//               onChange={(e) => { 
+//                 setPassword( {...password, value: e.target.value}); 
+//               }} 
+//               onBlur={() => { 
+//                 setPassword({ ...password, isTouched: true }); 
+//               }} 
+//             />
+//             {password.isTouched && password.value.length < 8 && (
+//               <PasswordErrorMessage />
+//             ) : null}
+//           </div>
+//           <div className="Field">
+//             <label htmlFor="role">
+//               Role <sup>*</sup>
+//             </label>
+//             <select name="role" value={role} onChange={(e) => setRole(e.target.value)}>
+//               <option value="role">Role</option>
+//               <option value="individual">Individual</option>
+//               <option value="business">Business</option>
+//             </select>
+//           </div>
+//           <button type="submit" disabled={!getIsFormValid()}>
+//             Create account
+//           </button>
+//         </fieldset>
+//       </form>
+//     </div>
+//   );
+// }
 
-export default App;
+// export default App;
 
 
