@@ -16,40 +16,40 @@
 
 import { useState } from "react";
 import "./App.css";
-import DessertsList from "./DessertsList";
-import MyForm from "./MyForm";
+// import DessertsList from "./DessertsList";
+// import MyForm from "./MyForm";
 
-const desserts = [
-  {
-    name: "Chocolate Cake",
-    calories: 400,
-    createdAt: "2022-09-01",
-  },
-  {
-    name: "Ice Cream",
-    calories: 200,
-    createdAt: "2022-01-02",
-  },
-  {
-    name: "Tiramisu",
-    calories: 300,
-    createdAt: "2021-10-03",
-  },
-  {
-    name: "Cheesecake",
-    calories: 600,
-    createdAt: "2022-01-04",
-  },
-];
+// const desserts = [
+//   {
+//     name: "Chocolate Cake",
+//     calories: 400,
+//     createdAt: "2022-09-01",
+//   },
+//   {
+//     name: "Ice Cream",
+//     calories: 200,
+//     createdAt: "2022-01-02",
+//   },
+//   {
+//     name: "Tiramisu",
+//     calories: 300,
+//     createdAt: "2021-10-03",
+//   },
+//   {
+//     name: "Cheesecake",
+//     calories: 600,
+//     createdAt: "2022-01-04",
+//   },
+// ];
 
 // const Lists = DessertsList.map(desserts => {
 //   const itemLists = `${name} - ${calories.sort(a,b)}` 
 // })
 
 function App() {
-  const [name, setName] = useState("");
-  const [score, setScore] = useState("10");
-  const [comment, setComment] = useState("");
+//   const [name, setName] = useState("");
+//   const [score, setScore] = useState("10");
+//   const [comment, setComment] = useState("");
 
   // const handleSubmit = (e) => {
   //   e.preventDefault();
@@ -57,24 +57,24 @@ function App() {
   //   console.log("form submitted");
   // }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (Number(score) <= 5 && comment.length <=10) 
-      {
-        alert("Please provide a comment explaining why the experience");
-      }
-      console.log("Form submitted!");
-      setComment("");
-      setScore("10");
-  }
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   if (Number(score) <= 5 && comment.length <=10) 
+  //     {
+  //       alert("Please provide a comment explaining why the experience");
+  //     }
+  //     console.log("Form submitted!");
+  //     setComment("");
+  //     setScore("10");
+  // }
 
   return (
     <div className="App">
-      <h2>List of low calorie desserts:</h2>
-      <DessertsList data={desserts} />
+      {/* <h2>List of low calorie desserts:</h2>
+      <DessertsList data={desserts} /> */}
 
       {/* //uncontrolled form  */}
-      <MyForm />
+      {/* <MyForm />
       <h2>List of low calorie desserts:</h2>
       <DessertsList data={desserts} />
       <form onSubmit={handleSubmit}> 
@@ -85,9 +85,9 @@ function App() {
           </div>
           <button disabled={!name} type="submit">Submit</button>
         </fieldset>
-      </form>
+      </form> */}
 
-    <h2>Please give us a review </h2>
+    {/* <h2>Please give us a review </h2>
     <h4>Your Welcome</h4>
       <form onSubmit={handleSubmit}>
         <fieldset>
@@ -102,7 +102,7 @@ function App() {
           </div>
           <button type="submit">Submit</button>
         </fieldset>
-      </form>
+      </form> */}
     </div>
   );
 }
