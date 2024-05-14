@@ -5,19 +5,22 @@ const foods = [
     {
         id: "1",
         title: "Beef Stew with rice",
-        image: "images(1).jpeg",
+        image: "",
+        description: "Mind blowing taste",
         price: "$100.00"
     },
     {
         id: "2",
         title: "Ugali Meat",
-        image: "images.jpeg",
+        image: ".",
+        description: "Mind blowing taste",
         price: "$150.00"
     },
     {
         id: "3",
         title: "Cheesburger and waffles",
-        image: "images(2).jpeg",
+        image: "",
+        description: "Mind blowing taste",
         price: "$200.00"
     }
 ];
@@ -28,17 +31,25 @@ const HotelApp = () => {
     <div>
       <h1>Hotel Name</h1>
       <div className="food-list">
-        {/* {foods.map(food => (
+        {foods.map(food => (
           <div key={food.id} className="food-item">
             <h2>{food.title}</h2>
-            <img src={require(`./images/${food.image}`).default} alt={food.title} />
+            {/* <img src={require(`./Images/${food.image}`).default} alt={food.title} /> */}
             <p>{food.description}</p>
             <p>{food.price}</p>
           </div>
-        ))} */}
+        ))}
+        {/* const topDesserts = foods.map(dessert => {
+            return {
+                content: `${dessert.title} - ${dessert.description}`,
+                price: dessert.price,
+            }
+        });
+        console.log(topDesserts); */}
       </div>
     </div>
   );
 };
+
 
 export default HotelApp;
