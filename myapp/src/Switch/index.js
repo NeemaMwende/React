@@ -2,12 +2,14 @@ import "./Styles.css";
 import { useTheme } from "../ThemeContext";
 
 const Switch = () => {
-  const { theme } = useTheme();
+  const { toggleTheme } = useTheme();
+
   return (
     <label className="switch">
       <input
         type="checkbox"
-        checked={theme === "light"}
+        onChange={toggleTheme}
+        // checked={theme === "light"}
       />
       <span className="slider round" />
     </label>
