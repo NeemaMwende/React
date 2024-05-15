@@ -3,7 +3,7 @@
 // import HotelApp from './HotelApp';
 import "./App.css";
 import React from "react";
-import { useState } from "react";
+import { useState , useEffect} from "react";
 // import { ThemeProvider, useTheme } from "./ThemeContext";
 // import Switch from "./Switch";
 
@@ -422,49 +422,84 @@ import { useState } from "react";
 //ANOTHER NEW GIFT CARD CODE
 
 
-export default function App() {
-  const [giftCard, setGiftCard] = useState(
-    {
-        firstName: "Jennifer",
-        lastName: "Smith",
-        text: "Free dinner for 4 guests",
-        valid: true,
-        instructions: "To use your coupon, click the button below.",
-    }
-  );
+// export default function App() {
+//   const [giftCard, setGiftCard] = useState(
+//     {
+//         firstName: "Jennifer",
+//         lastName: "Smith",
+//         text: "Free dinner for 4 guests",
+//         valid: true,
+//         instructions: "To use your coupon, click the button below.",
+//     }
+//   );
 
-  function spendGiftCard() {
-    setGiftCard((prevState) => {
-      return {
-        ...prevState,
-        text: "Your coupon has been used.",
-        valid: false,
-        instructions: "Please visit our restaurant to renew your gift card.",
-      };
-    });
+//   function spendGiftCard() {
+//     setGiftCard((prevState) => {
+//       return {
+//         ...prevState,
+//         text: "Your coupon has been used.",
+//         valid: false,
+//         instructions: "Please visit our restaurant to renew your gift card.",
+//       };
+//     });
+//   }
+
+//   return (
+//     <div style={{padding: '40px'}}>
+//       <h1>
+//         Gift Card Page
+//       </h1>
+//       <h2>
+//         Customer: {giftCard.firstName} {giftCard.lastName}
+//       </h2>
+//       <h3>
+//         {giftCard.text}
+//       </h3>
+//       <p>
+//         {giftCard.instructions}
+//       </p>
+//       {
+//         giftCard.valid && (
+//           <button onClick={spendGiftCard}>
+//             Spend Gift Card
+//           </button>
+//         )
+//       }
+//     </div>
+//   );
+// }
+
+//USE EFFECT EXAMPLE CODE
+
+// function LittleLemonChat(props) { 
+//   const [status, setStatus] = useState('offline'); 
+
+//   useEffect(() => { 
+//     LemonChat.subscribeToMessages(props.chatId, () => setStatus('online')); 
+
+//     return () => { 
+//       setStatus('offline'); 
+//       LemonChat.unsubscribeFromMessages(props.chatId); 
+//     }; 
+//   }, [props.chatId]); 
+
+//   // The rest of the component code...
+// }
+
+function App(){
+  const [toggle, setToggle] = React.useState(false);
+
+  const clickHandler = () => {
+    setToggle(!toggle);
   }
 
-  return (
-    <div style={{padding: '40px'}}>
-      <h1>
-        Gift Card Page
-      </h1>
-      <h2>
-        Customer: {giftCard.firstName} {giftCard.lastName}
-      </h2>
-      <h3>
-        {giftCard.text}
-      </h3>
-      <p>
-        {giftCard.instructions}
-      </p>
-      {
-        giftCard.valid && (
-          <button onClick={spendGiftCard}>
-            Spend Gift Card
-          </button>
-        )
-      }
+  return(
+    <div>
+      <h1>Using the useEffect Hook </h1>
+      <button onClick={clickHandler}>Toggle Message</button>
+      {toggle && <h2>Welcome to Little Lemon</h2>}
     </div>
-  );
+  )
 }
+
+export default App;
