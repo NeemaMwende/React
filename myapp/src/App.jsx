@@ -1,17 +1,21 @@
 // import logo from './logo.svg';
 // import './App.css';
 // import HotelApp from './HotelApp';
-// import "./App.css";
-// import React from "react";
+import "./App.css";
+import React from "react";
 // import useConsoleLog from "./useConsoleLog";
 // import { useEffect , useState} from "react";
 // import { useState, useEffect, useRef } from "react";
 // import { ThemeProvider, useTheme } from "./ThemeContext";
 // import Switch from "./Switch";
 // import { useState }from 'react'
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 // function App() {
 //   return (
 //     <div className="App">
+
+// const { Children } = require("react");
 
 //       <HotelApp />
       
@@ -724,28 +728,104 @@
 //   }
 // }
 
-const Button = ({children, backgroundColor}) => {
-  return ( 
-    <button style={{backgroundColor}}>{children}</button>
-   );
-}
 
-const Alert = ({ children }) => {
+//AN ALERT BOX 
+
+
+// const Button = ({ children, backgroundColor }) => {
+//   return (
+//     <button style={{ backgroundColor }}>{children}</button>
+//   );
+// };
+
+// const Alert = ({ children }) => {
+//   return (
+//     <>
+//       <div className="Overlay" />
+//       <div className="Alert">{children}</div>
+//     </>
+//   );
+// };
+
+// const DeleteButton = () => {
+//   return <Button backgroundColor="red">Delete</Button>;
+// };
+
+// function App() {
+//   return (
+//     <div className="App">
+//       <header>Little Lemon Restaurant</header>
+
+//       <Alert>
+//         <h4>Delete Account</h4>
+//         <p>
+//           Are you sure you want to delete your Account? 
+//           You will miss out on all the delicacies!
+//         </p>
+//       </Alert>
+
+//       <DeleteButton />
+//     </div>
+//   );
+// }
+
+// export default App;
+
+
+// //TOAST TO REPLACE ALERT
+
+// const Button = ({ children, backgroundColor }) => {
+//   return (
+//     <button style={{ backgroundColor }}>{children}</button>
+//   );
+// };
+
+// function App() {
+//   const handleDeleteClick = () => {
+//     toast.error("Are you sure you want to delete your Account? You will miss out on all the delicacies!");
+//   };
+
+//   return (
+//     <div className="App">
+//       <header>Little Lemon Restaurant</header>
+
+//       <ToastContainer />
+
+//       <h4>Delete Account</h4>
+//       <p>
+//         Are you sure you want to delete your Account? 
+//         You will miss out on all the delicacies!
+//       </p>
+//       <Button onClick={handleDeleteClick} backgroundColor="red">Delete</Button>
+//     </div>
+//   );
+// }
+
+// export default App;
+
+
+//MANIPULATING CHILDREN DYNAMICALLY IN JSX
+
+const Row = ({children}) => {
   return (
-    <>
-      <div className="Overlay" />
-      <div className="Alert">{children}</div>
-    </> 
+    <div className="Row">
+      {children}
+    </div>
   );
 };
 
-
-function App(){
-  return(
-    <div className="App">
-      <header>Little Lemon Restaurant</header>
+function LiveOrders(){
+  return (
+    <div>
+      <Row spacing="{32}">
+        <p>Pizza Margarita</p>
+        <p>2</p>
+        <p>300</p>
+        <p>18:38</p>
+        <p>John</p>
+      </Row>
     </div>
   )
 }
- 
-export default App;
+
+export default LiveOrders;
