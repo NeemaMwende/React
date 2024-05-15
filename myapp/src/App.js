@@ -2,8 +2,9 @@
 // import './App.css';
 // import HotelApp from './HotelApp';
 import "./App.css";
-import { ThemeProvider, useTheme } from "./ThemeContext";
-import Switch from "./Switch";
+import React from "react";
+// import { ThemeProvider, useTheme } from "./ThemeContext";
+// import Switch from "./Switch";
 
 // function App() {
 //   return (
@@ -274,87 +275,142 @@ import Switch from "./Switch";
 // export default App;
 
 
+//ANOTHER NEW CODE
+
+function GoalForm(props){
+  const [formData, setFormData] = React.useState([goal: "", by: ""]);
+
+  function changeHandler(e) {
+    setFormData({...formData, [e.target.name]: e.target.value});
+  }
+
+  function submitHandler(e){
+    e.preventDefault();
+    props.onAdd(formData);
+    setFormData({goal:"", by:""});
+  };
+
+  return(
+    <>
+      <h1>My Little Lemon Goals</h1>
+      <form onSubmit={submitHandler}>
+        <input type="text" name="goal" placeholder="Goal" value={formData.goal} onChange={changeHandler} /> 
+        <input type="text" name="by" placeholder="By..." value={formData.by} onChange={changeHandler} />
+        <button>Submit Goal</button> 
+      </form>
+    </>
+  );
+}
+
+function ListOfGoals(props) {
+  return(
+    <ul>
+      (props.allGoals.map((g) => (
+        <li key={g.goal}>
+          <span>My goal is to {g.goal}, by {g.by}</span>
+        </li>
+      )))
+    </ul>
+  )
+}
+const App = () => { 
+  
+  const [allGoals, updateAllGoals ] = React.useState([]);
+
+  function addGoal(goal).{ updateAllGoals([...allGoals, goal]); }
+
+  return ( 
+    <div className="App">
+      <GoalForm onAdd={addGoal} />
+        <ListOfGoals allGoals={allGoals} />
+    </div>
+   );
+}
+ 
+export default App;
+
+
 // ANOTHER NEW CODE
 
-const Title = ({ children }) => {
-  const { theme } = useTheme();
-  return (
-    <h2
-      style={{
-        color: theme === "light" ? "black" : "white",
-      }}
-    >
-      {children}
-    </h2>
-  );
-};
+// const Title = ({ children }) => {
+//   const { theme } = useTheme();
+//   return (
+//     <h2
+//       style={{
+//         color: theme === "light" ? "black" : "white",
+//       }}
+//     >
+//       {children}
+//     </h2>
+//   );
+// };
 
-const Paragraph = ({ children }) => {
-  const { theme } = useTheme();
-  return (
-    <p
-      style={{
-        color: theme === "light" ? "black" : "white",
-      }}
-    >
-      {children}
-    </p>
-  );
-};
+// const Paragraph = ({ children }) => {
+//   const { theme } = useTheme();
+//   return (
+//     <p
+//       style={{
+//         color: theme === "light" ? "black" : "white",
+//       }}
+//     >
+//       {children}
+//     </p>
+//   );
+// };
 
-const Content = () => {
-  return (
-    <div>
-      <Paragraph>
-        We are a pizza loving family. And for years, I searched and searched and
-        searched for the perfect pizza dough recipe. I tried dozens, or more.
-        And while some were good, none of them were that recipe that would
-        make me stop trying all of the others.
-      </Paragraph>
-    </div>
-  );
-};
+// const Content = () => {
+//   return (
+//     <div>
+//       <Paragraph>
+//         We are a pizza loving family. And for years, I searched and searched and
+//         searched for the perfect pizza dough recipe. I tried dozens, or more.
+//         And while some were good, none of them were that recipe that would
+//         make me stop trying all of the others.
+//       </Paragraph>
+//     </div>
+//   );
+// };
 
-const Header = () => {
-  return (
-    <header>
-      <Title>Little Lemon 🍕</Title>
-      <Switch />
-    </header>
-  );
-};
+// const Header = () => {
+//   return (
+//     <header>
+//       <Title>Little Lemon 🍕</Title>
+//       <Switch />
+//     </header>
+//   );
+// };
 
-const Page = () => {
-  return (
-    <div className="Page">
-      <Title>When it comes to dough</Title>
-      <Content />
-    </div>
-  );
-};
+// const Page = () => {
+//   return (
+//     <div className="Page">
+//       <Title>When it comes to dough</Title>
+//       <Content />
+//     </div>
+//   );
+// };
 
-function App() {
-  const { theme } = useTheme();
-  return (
-    <div
-      className="App"
-      style={{
-        backgroundColor: theme === "light" ? "white" : "black",
-      }}
-    >
-      <Header />
-      <Page />
-    </div>
-  );
-}
+// function App() {
+//   const { theme } = useTheme();
+//   return (
+//     <div
+//       className="App"
+//       style={{
+//         backgroundColor: theme === "light" ? "white" : "black",
+//       }}
+//     >
+//       <Header />
+//       <Page />
+//     </div>
+//   );
+// }
 
-function Root() {
-  return (
-    <ThemeProvider>
-      <App />
-    </ThemeProvider>
-  );
-}
+// function Root() {
+//   return (
+//     <ThemeProvider>
+//       <App />
+//     </ThemeProvider>
+//   );
+// }
 
-export default Root;
+// export default Root;
 
