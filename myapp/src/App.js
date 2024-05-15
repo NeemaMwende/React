@@ -1,12 +1,12 @@
 // import logo from './logo.svg';
 // import './App.css';
 // import HotelApp from './HotelApp';
-// import "./App.css";
-// import React from "react";
+import "./App.css";
+import React from "react";
 // import { useState , useEffect} from "react";
 // import { ThemeProvider, useTheme } from "./ThemeContext";
 // import Switch from "./Switch";
-
+import { useReducer }from 'react'
 // function App() {
 //   return (
 //     <div className="App">
@@ -588,3 +588,28 @@
 // }
 
 // export default App;
+
+const reducer = (state, action) => {
+  if(action.type === 'buy_ingredients')return{money: state.money - 10};
+  if(action.type === 'sell_a_meal')return{money: state.money + 100};
+  if(action.type === 'celebrity_visits')return{money: state.money + 5000};
+  return state;
+}
+
+function App(){
+  const initialState = {money: 100};
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  return(
+    <div className="App">
+      <h1>Wallet:{state.money}</h1>
+      <div>
+        <button onClick={() => dispatch({type:'buy_ingredients'})}>Shopping for veggies</button>
+        <button onClick={() => dispatch({type:'sell_a_meal'})}>Serve a meal to the Customer</button>
+        <button onClick={() => dispatch({type:'celebrity_visits'})}>Celebrity visit</button>
+      </div>
+    </div>
+  );
+}
+
+export default App;
