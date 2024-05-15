@@ -1,9 +1,9 @@
 // import logo from './logo.svg';
 // import './App.css';
 // import HotelApp from './HotelApp';
-import "./App.css";
-import React from "react";
-import { useState , useEffect} from "react";
+// import "./App.css";
+// import React from "react";
+// import { useState , useEffect} from "react";
 // import { ThemeProvider, useTheme } from "./ThemeContext";
 // import Switch from "./Switch";
 
@@ -563,28 +563,28 @@ import { useState , useEffect} from "react";
 
 
 // A DIFFERENT EXAMPLE
-function App(){
-  const [user, setUser] = React.useState([]);
+// function App(){
+//   const [user, setUser] = React.useState([]);
 
-  const fetchData = () => {
-    fetch("https://randomuser.me/api/?results-1")
-    .then(response => response.json())
-    .then(data => setUser(data));
-  }
+//   const fetchData = () => {
+//     fetch("https://randomuser.me/api/?results-1")
+//     .then(response => response.json())
+//     .then(data => setUser(data));
+//   }
 
-  React.useEffect(() => {
-    fetchData();
-  },[]);
+//   React.useEffect(() => {
+//     fetchData();
+//   },[]);
 
-  return Object.keys(user).length > 0 ? (
-    <div>
-      <h1>Data returned</h1>
-      <h2>First Name: {user.results[0].name.first}</h2>
-      <h2>Last Name: {user.results[0].name.last}</h2>
-    </div>
-  ) : (
-    <h1>Data pending...</h1>
-  );
-}
+//   return Object.keys(user).length > 0 ? (
+//     <div>
+//       <h1>Data returned</h1>
+//       <h2>First Name: {user.results[0].name.first}</h2>
+//       <h2>Last Name: {user.results[0].name.last}</h2>
+//     </div>
+//   ) : (
+//     <h1>Data pending...</h1>
+//   );
+// }
 
-export default App;
+// export default App;
