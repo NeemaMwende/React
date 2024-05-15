@@ -589,26 +589,48 @@ import { useReducer }from 'react'
 
 // export default App;
 
-const reducer = (state, action) => {
-  if(action.type === 'buy_ingredients')return{money: state.money - 10};
-  if(action.type === 'sell_a_meal')return{money: state.money + 100};
-  if(action.type === 'celebrity_visits')return{money: state.money + 5000};
-  return state;
-}
+//THE USEREDUCER HOOK
+
+// const reducer = (state, action) => {
+//   if(action.type === 'buy_ingredients')return{money: state.money - 10};
+//   if(action.type === 'sell_a_meal')return{money: state.money + 100};
+//   if(action.type === 'celebrity_visits')return{money: state.money + 5000};
+//   return state;
+// }
+
+// function App(){
+//   const initialState = {money: 100};
+//   const [state, dispatch] = useReducer(reducer, initialState);
+
+//   return(
+//     <div className="App">
+//       <h1>Wallet:{state.money}</h1>
+//       <div>
+//         <button onClick={() => dispatch({type:'buy_ingredients'})}>Shopping for veggies</button>
+//         <button onClick={() => dispatch({type:'sell_a_meal'})}>Serve a meal to the Customer</button>
+//         <button onClick={() => dispatch({type:'celebrity_visits'})}>Celebrity visit</button>
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default App;
+
+//USEREF HOOK
 
 function App(){
-  const initialState = {money: 100};
-  const [state, dispatch] = useReducer(reducer, initialState);
+
+  const formInputRef = React.useRef(null);
+  const focusInput = () => {
+    formInputRef.current.focus();
+  }
 
   return(
-    <div className="App">
-      <h1>Wallet:{state.money}</h1>
-      <div>
-        <button onClick={() => dispatch({type:'buy_ingredients'})}>Shopping for veggies</button>
-        <button onClick={() => dispatch({type:'sell_a_meal'})}>Serve a meal to the Customer</button>
-        <button onClick={() => dispatch({type:'celebrity_visits'})}>Celebrity visit</button>
-      </div>
-    </div>
+    <>
+      <h1>Using useRef to access underlying DOM</h1>
+      <input type="text" ref={formInputRef}/>
+      <button onClick={focusInput}>Focus Input</button>
+    </>
   );
 }
 
