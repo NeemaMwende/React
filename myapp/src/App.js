@@ -3,10 +3,11 @@
 // import HotelApp from './HotelApp';
 import "./App.css";
 import React from "react";
-// import { useState , useEffect} from "react";
+import useConsoleLog from "./useConsoleLog";
+import { useEffect , useState} from "react";
 // import { ThemeProvider, useTheme } from "./ThemeContext";
 // import Switch from "./Switch";
-import { useReducer }from 'react'
+// import { useState }from 'react'
 // function App() {
 //   return (
 //     <div className="App">
@@ -618,20 +619,41 @@ import { useReducer }from 'react'
 
 //USEREF HOOK
 
-function App(){
+// function App(){
 
-  const formInputRef = React.useRef(null);
-  const focusInput = () => {
-    formInputRef.current.focus();
-  }
+//   const formInputRef = React.useRef(null);
+//   const focusInput = () => {
+//     formInputRef.current.focus();
+//   }
 
-  return(
-    <>
-      <h1>Using useRef to access underlying DOM</h1>
-      <input type="text" ref={formInputRef}/>
-      <button onClick={focusInput}>Focus Input</button>
-    </>
-  );
-}
+//   return(
+//     <>
+//       <h1>Using useRef to access underlying DOM</h1>
+//       <input type="text" ref={formInputRef}/>
+//       <button onClick={focusInput}>Focus Input</button>
+//     </>
+//   );
+// }
 
-export default App;
+// export default App;
+
+//USE OF CUSTOM HOOKS
+
+ 
+function App() { 
+  const [count, setCount] = useState(0); 
+  useConsoleLog(count);
+ 
+  function increment() { 
+    setCount(prevCount => prevCount + 1) 
+  } 
+ 
+  return ( 
+    <div> 
+      <h1>Count: {count}</h1> 
+      <button onClick={increment}>Plus 1</button> 
+    </div> 
+  ); 
+} 
+ 
+export default App; 
