@@ -250,7 +250,7 @@ import Switch from "./Switch";
 //             />
 //             {password.isTouched && password.value.length < 8 && (
 //               <PasswordErrorMessage />
-//             ) : null}
+//             )}
 //           </div>
 //           <div className="Field">
 //             <label htmlFor="role">
