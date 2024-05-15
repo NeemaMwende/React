@@ -486,20 +486,54 @@ import { useState , useEffect} from "react";
 //   // The rest of the component code...
 // }
 
-function App(){
-  const [toggle, setToggle] = React.useState(false);
+// function App(){
+//   const [toggle, setToggle] = React.useState(false);
 
-  const clickHandler = () => {
-    setToggle(!toggle);
-  }
+//   const clickHandler = () => {
+//     setToggle(!toggle);
+//   }
 
-  return(
-    <div>
-      <h1>Using the useEffect Hook </h1>
-      <button onClick={clickHandler}>Toggle Message</button>
-      {toggle && <h2>Welcome to Little Lemon</h2>}
-    </div>
-  )
-}
+//   React.useEffect(() => {
+//     document.title = toggle ? "Welcome to little lemon" : "Using the UseEffect hook"
+//   },[toggle]);
 
-export default App;
+//   return(
+//     <div>
+//       <h1>Using the useEffect Hook </h1>
+//       <button onClick={clickHandler}>Toggle Message</button>
+//       {toggle && <h2>Welcome to Little Lemon</h2>}
+//     </div>
+//   )
+// }
+
+// export default App;
+
+//ANOTHER EXAMPLE
+ 
+import { useState, useEffect } from "react"; 
+ 
+export default function App() { 
+  const [btcData, setBtcData] = useState({}); 
+ 
+  const fetchData = () => { 
+    fetch(`https://api.coindesk.com/v1/bpi/currentprice.json`) 
+      .then((response) => response.json()) 
+      .then((jsonData) => setBtcData(jsonData.bpi.USD)) 
+      .catch((error) => console.log(error)); 
+  }; 
+ 
+  useEffect(() => { 
+    fetchData(); 
+  }, []); 
+ 
+  return ( 
+    <> 
+      <h1>Current BTC/USD data</h1> 
+      <p>Code: {btcData.code}</p> 
+      <p>Symbol: {btcData.symbol}</p> 
+      <p>Rate: {btcData.rate}</p> 
+      <p>Description: {btcData.description}</p> 
+      <p>Rate Float: {btcData.rate_float}</p> 
+    </> 
+  ); 
+} 
