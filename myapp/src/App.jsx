@@ -806,13 +806,21 @@ import React from "react";
 
 //MANIPULATING CHILDREN DYNAMICALLY IN JSX
 
-const Row = ({children}) => {
+const Row = ({ children, childStyle }) => {
   return (
     <div className="Row">
-      {children}
+      {React.Children.map(children, (child, index) => {
+        return React.cloneElement(child, {
+          style: {
+            ...(child.props.style || {}), // Ensure child.props.style exists
+            ...(index > 0 ? childStyle : {}), // Apply conditional style
+          },
+        });
+      })}
     </div>
   );
 };
+
 
 function LiveOrders(){
   return (
