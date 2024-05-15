@@ -3,6 +3,7 @@
 // import HotelApp from './HotelApp';
 import "./App.css";
 import React from "react";
+import { useState } from "react";
 // import { ThemeProvider, useTheme } from "./ThemeContext";
 // import Switch from "./Switch";
 
@@ -115,7 +116,7 @@ import React from "react";
 // export default App;
 
 
-//NEW CODE
+//NEW REGISTER FORM CODE
 
 
 // const PasswordErrorMessage = () => {
@@ -275,10 +276,11 @@ import React from "react";
 // export default App;
 
 
-//ANOTHER NEW CODE
+//ANOTHER NEW MY GOALS CODE
+
 
 function GoalForm(props){
-  const [formData, setFormData] = React.useState([goal: "", by: ""]);
+  const [formData, setFormData] = React.useState({goal: "", by: ""});
 
   function changeHandler(e) {
     setFormData({...formData, [e.target.name]: e.target.value});
@@ -305,32 +307,34 @@ function GoalForm(props){
 function ListOfGoals(props) {
   return(
     <ul>
-      (props.allGoals.map((g) => (
+      {props.allGoals.map((g) => (
         <li key={g.goal}>
           <span>My goal is to {g.goal}, by {g.by}</span>
         </li>
-      )))
+      ))}
     </ul>
-  )
+  );
 }
+
 const App = () => { 
-  
   const [allGoals, updateAllGoals ] = React.useState([]);
 
-  function addGoal(goal).{ updateAllGoals([...allGoals, goal]); }
+  function addGoal(goal) {
+    updateAllGoals([...allGoals, goal]);
+  }
 
   return ( 
     <div className="App">
       <GoalForm onAdd={addGoal} />
-        <ListOfGoals allGoals={allGoals} />
+      <ListOfGoals allGoals={allGoals} />
     </div>
-   );
+  );
 }
  
 export default App;
 
 
-// ANOTHER NEW CODE
+// ANOTHER NEW SWITCH THEME CODE
 
 // const Title = ({ children }) => {
 //   const { theme } = useTheme();
