@@ -3,8 +3,9 @@
 // import HotelApp from './HotelApp';
 import "./App.css";
 import React from "react";
-import useConsoleLog from "./useConsoleLog";
-import { useEffect , useState} from "react";
+// import useConsoleLog from "./useConsoleLog";
+// import { useEffect , useState} from "react";
+import { useState, useEffect, useRef } from "react";
 // import { ThemeProvider, useTheme } from "./ThemeContext";
 // import Switch from "./Switch";
 // import { useState }from 'react'
@@ -640,20 +641,66 @@ import { useEffect , useState} from "react";
 //USE OF CUSTOM HOOKS
 
  
-function App() { 
-  const [count, setCount] = useState(0); 
-  useConsoleLog(count);
+// function App() { 
+//   const [count, setCount] = useState(0); 
+//   useConsoleLog(count);
  
-  function increment() { 
-    setCount(prevCount => prevCount + 1) 
-  } 
+//   function increment() { 
+//     setCount(prevCount => prevCount + 1) 
+//   } 
  
-  return ( 
-    <div> 
-      <h1>Count: {count}</h1> 
-      <button onClick={increment}>Plus 1</button> 
-    </div> 
-  ); 
-} 
+//   return ( 
+//     <div> 
+//       <h1>Count: {count}</h1> 
+//       <button onClick={increment}>Plus 1</button> 
+//     </div> 
+//   ); 
+// } 
  
-export default App; 
+// export default App; 
+
+//MY CUSTOM MADE HOOK
+
+export default function App() {
+  const [day, setDay] = useState("Monday");
+  const prevDay = usePrevious(day);
+  const getNextDay = () => {
+    if (day === "Monday") {
+      setDay("Tuesday")
+    } else if (day === "Tuesday") {
+      setDay("Wednesday")
+    } else if (day === "Wednesday") {
+      setDay("Thursday")
+    } else if (day === "Thursday") {
+      setDay("Friday")
+    } else if (day === "Friday") {
+      setDay("Monday")
+    }
+  }
+  return (
+    <div style={{padding: "40px"}}>
+      <h1>
+        Today is: {day}<br />
+        {
+          prevDay && (
+            <span>Previous work day was: {prevDay}</span>
+          )
+        }
+      </h1>
+      <button onClick={getNextDay}>
+        Get next day
+      </button>
+    </div>
+  );
+}
+function usePrevious(val) {
+  const ref = useRef(); // Step 1
+
+  useEffect(() => { // Step 2
+    ref.current = val; // Step 3
+  }, [val]); // Step 3
+
+  return ref.current; // Step 4
+}
+
+// export default App;
