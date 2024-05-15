@@ -1,11 +1,11 @@
 // import logo from './logo.svg';
 // import './App.css';
 // import HotelApp from './HotelApp';
-import "./App.css";
-import React from "react";
+// import "./App.css";
+// import React from "react";
 // import useConsoleLog from "./useConsoleLog";
 // import { useEffect , useState} from "react";
-import { useState, useEffect, useRef } from "react";
+// import { useState, useEffect, useRef } from "react";
 // import { ThemeProvider, useTheme } from "./ThemeContext";
 // import Switch from "./Switch";
 // import { useState }from 'react'
@@ -703,4 +703,49 @@ import { useState, useEffect, useRef } from "react";
 //   return ref.current; // Step 4
 // }
 
-// export default App;
+// // export default App;
+
+// //DIALOG : CONTAINMENT AND SPECIALIZATION
+
+// function Dialog(props) {
+//   return (
+//     <div className="modal">
+//       {props.children}
+//     </div>
+//   );
+// }
+
+// function ConfirmationDialog(){
+//   return {
+//     <Dialog color="blue">
+//       <h1 className="Dialog-title"> Thanks </h1>
+//       <p className="Dialog-message">We will process your order in less than 24 hours</p>
+//     </Dialog>
+//   }
+// }
+
+const Button = ({children, backgroundColor}) => {
+  return ( 
+    <button style={{backgroundColor}}>{children}</button>
+   );
+}
+
+const Alert = ({ children }) => {
+  return (
+    <>
+      <div className="Overlay" />
+      <div className="Alert">{children}</div>
+    </> 
+  );
+};
+
+
+function App(){
+  return(
+    <div className="App">
+      <header>Little Lemon Restaurant</header>
+    </div>
+  )
+}
+ 
+export default App;
