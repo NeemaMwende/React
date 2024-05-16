@@ -1,7 +1,6 @@
 // import logo from './logo.svg';
-import React, { useState, useEffect } from 'react';
-import DataSource from './DataSource';
-import LiveOrders from './LiveOrders';
+import React from 'react';
+import LiveOrdersList from './LiveOrdersList';
 
 // import './App.css';
 // import HotelApp from './HotelApp';
@@ -878,23 +877,16 @@ import LiveOrders from './LiveOrders';
 // }
 
 //LIVE ORDERS LIST
-function LiveOrdersList() {
-  const [orders, setOrders] = useState([]);
+// App.js
 
-  useEffect(() => {
-    const handleNewOrders = () => {
-      const newOrders = DataSource.getOrders();
-      setOrders(newOrders);
-    }
 
-    DataSource.addListener(handleNewOrders);
-
-    return() => {
-      DataSource.removeListener(handleNewOrders)
-    };
-  },[]);
-
-  return <LiveOrders orders={orders} /> 
+function App() {
+  return (
+    <div className="App">
+      <h1>Restaurant Orders</h1>
+      <LiveOrdersList />
+    </div>
+  );
 }
 
-export default LiveOrdersList;
+export default App;
