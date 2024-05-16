@@ -3,12 +3,13 @@
 // import HotelApp from './HotelApp';
 import "./App.css";
 import React from "react";
+import { RadioGroup, RadioOption} from './Radio';
 // import useConsoleLog from "./useConsoleLog";
 // import { useEffect , useState} from "react";
 // import { useState, useEffect, useRef } from "react";
 // import { ThemeProvider, useTheme } from "./ThemeContext";
 // import Switch from "./Switch";
-// import { useState }from 'react'
+import { useState }from 'react'
 // import { ToastContainer, toast } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
 // function App() {
@@ -806,34 +807,54 @@ import React from "react";
 
 //MANIPULATING CHILDREN DYNAMICALLY IN JSX
 
-const Row = ({ children, childStyle }) => {
+// const Row = ({ children, childStyle }) => {
+//   return (
+//     <div className="Row">
+//       {React.Children.map(children, (child, index) => {
+//         return React.cloneElement(child, {
+//           style: {
+//             ...(child.props.style || {}), // Ensure child.props.style exists
+//             ...(index > 0 ? childStyle : {}), // Apply conditional style
+//           },
+//         });
+//       })}
+//     </div>
+//   );
+// };
+
+
+// function LiveOrders(){
+//   return (
+//     <div>
+//       <Row spacing="{32}">
+//         <p>Pizza Margarita</p>
+//         <p>2</p>
+//         <p>300</p>
+//         <p>18:38</p>
+//         <p>John</p>
+//       </Row>
+//     </div>
+//   )
+// }
+
+// export default LiveOrders;
+
+//RADIO BUTTON GROUPING
+
+function App() {
+  const [selected, setSelected] = useState("");
   return (
-    <div className="Row">
-      {React.Children.map(children, (child, index) => {
-        return React.cloneElement(child, {
-          style: {
-            ...(child.props.style || {}), // Ensure child.props.style exists
-            ...(index > 0 ? childStyle : {}), // Apply conditional style
-          },
-        });
-      })}
+    <div className="App">
+      <h2>How did you hear about Little Lemon?</h2>
+      <RadioGroup onChange={setSelected} selected={selected}>
+        <RadioOption value="social_media">Social Media</RadioOption>
+        <RadioOption value="friends">Friends</RadioOption>
+        <RadioOption value="advertising">Advertising</RadioOption>
+        <RadioOption value="other">Other</RadioOption>
+      </RadioGroup>
+      <button disabled={!selected}>Submit</button>
     </div>
   );
-};
-
-
-function LiveOrders(){
-  return (
-    <div>
-      <Row spacing="{32}">
-        <p>Pizza Margarita</p>
-        <p>2</p>
-        <p>300</p>
-        <p>18:38</p>
-        <p>John</p>
-      </Row>
-    </div>
-  )
 }
 
-export default LiveOrders;
+export default App;
