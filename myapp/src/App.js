@@ -890,3 +890,44 @@
 // }
 
 // export default App;
+
+
+//HOC FOR CURSOR POSITION
+
+const PanelMouseLogger = ({mousePosition}) => {
+  if (!mousePosition) {
+    return null;
+  }
+  return (
+    <div>
+      <p>Mouse Poistion:</p>
+      <div className="Row">
+        <span>x: {mousePosition.x}</span>
+        <span>y: {mousePosition.y}</span>
+      </div>
+    </div>
+  );
+}
+
+const PointMouseLogger = ({mousePosition}) => {
+  if (!mousePosition) {
+    return null;
+  }
+  return(
+    <p>
+      ({mousePosition.x}, {mousePosition.y})
+    </p>
+  );
+};
+
+function App(){
+  return(
+    <div>
+      <header className="Header">Little Lemon Restaurant</header>
+      <PanelMouseLogger />
+      <PanelMouseLogger />
+    </div>
+  );
+}
+
+export default App;
