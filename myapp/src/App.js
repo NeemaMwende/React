@@ -12,7 +12,7 @@
 // import { useState, useEffect, useRef } from "react";
 // import { ThemeProvider, useTheme } from "./ThemeContext";
 // import Switch from "./Switch";
-// import { useState }from 'react'
+import { useState, useEffect }from 'react'
 // import { ToastContainer, toast } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
 // function App() {
@@ -894,6 +894,34 @@
 
 //HOC FOR CURSOR POSITION
 
+const withMousePosition = (WrappedComponent) => {
+  return (props) => {
+
+    const [mousePosition, setMousePosition] = useState({
+      x: 0,
+      y: 0,
+    });
+
+    useEffect(() => {
+      const handleMousePositionChange = (e) => {
+        setMousePosition({
+          x: e.clientX,
+          y: e.clientY,
+        })
+      }; 
+
+      window.addEventListener("mousemove", handleMousePositionChange);
+
+      //clean up
+      return () => {
+        window.removeEventListener("mousemove", handleMousePositionChange);
+      }
+    },[]);
+
+    return <WrappedComponent {...props} mousePosition={mousePosition} />
+  }
+}
+
 const PanelMouseLogger = ({mousePosition}) => {
   if (!mousePosition) {
     return null;
@@ -925,7 +953,7 @@ function App(){
     <div>
       <header className="Header">Little Lemon Restaurant</header>
       <PanelMouseLogger />
-      <PanelMouseLogger />
+      <PointMouseLogger />
     </div>
   );
 }
