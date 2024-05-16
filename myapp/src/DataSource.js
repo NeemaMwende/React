@@ -1,4 +1,3 @@
-// DataSource.js
 const listeners = new Set();
 
 const orders = [
@@ -17,20 +16,30 @@ const orders = [
 ];
 
 const DataSource = {
-  getOrders() {
-    return orders;
+  getOrders: async () => {
+    try {
+      const response = await fetch('https://randomuser.me/api/0.8/?results=10');
+      if (!response.ok) {
+        throw new Error('Failed to fetch orders');
+      }
+      const data = await response.json();
+      return data.results; // Assuming the JSON response contains an array called 'results'
+    } catch (error) {
+      console.error('Error fetching orders:', error);
+      return []; // Return an empty array or handle the error accordingly
+    }
   },
 
-  addListener(listener) {
+  addListener: (listener) => {
     listeners.add(listener);
   },
 
-  removeListener(listener) {
+  removeListener: (listener) => {
     listeners.delete(listener);
   },
 
   // Method to simulate new orders being added
-  simulateNewOrder(newOrder) {
+  simulateNewOrder: (newOrder) => {
     orders.push(newOrder);
     listeners.forEach(listener => listener());
   }
