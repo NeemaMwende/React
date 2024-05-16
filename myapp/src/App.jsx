@@ -1,20 +1,22 @@
 // import logo from './logo.svg';
 // import './App.css';
 // import HotelApp from './HotelApp';
-import "./App.css";
-import React from "react";
-import { RadioGroup, RadioOption} from './Radio';
+// import "./App.css";
+// import React from "react";
+// import { RadioGroup, RadioOption} from './Radio';
 // import useConsoleLog from "./useConsoleLog";
 // import { useEffect , useState} from "react";
 // import { useState, useEffect, useRef } from "react";
 // import { ThemeProvider, useTheme } from "./ThemeContext";
 // import Switch from "./Switch";
-import { useState }from 'react'
+// import { useState }from 'react'
 // import { ToastContainer, toast } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
 // function App() {
 //   return (
 //     <div className="App">
+
+const { useState, useEffect } = require("react");
 
 // const { Children } = require("react");
 
@@ -841,20 +843,54 @@ import { useState }from 'react'
 
 //RADIO BUTTON GROUPING
 
-function App() {
-  const [selected, setSelected] = useState("");
-  return (
-    <div className="App">
-      <h2>How did you hear about Little Lemon?</h2>
-      <RadioGroup onChange={setSelected} selected={selected}>
-        <RadioOption value="social_media">Social Media</RadioOption>
-        <RadioOption value="friends">Friends</RadioOption>
-        <RadioOption value="advertising">Advertising</RadioOption>
-        <RadioOption value="other">Other</RadioOption>
-      </RadioGroup>
-      <button disabled={!selected}>Submit</button>
-    </div>
-  );
+// function App() {
+//   const [selected, setSelected] = useState("");
+//   return (
+//     <div className="App">
+//       <h2>How did you hear about Little Lemon?</h2>
+//       <RadioGroup onChange={setSelected} selected={selected}>
+//         <RadioOption value="social_media">Social Media</RadioOption>
+//         <RadioOption value="friends">Friends</RadioOption>
+//         <RadioOption value="advertising">Advertising</RadioOption>
+//         <RadioOption value="other">Other</RadioOption>
+//       </RadioGroup>
+//       <button disabled={!selected}>Submit</button>
+//     </div>
+//   );
+// }
+
+// export default App;
+
+
+// SPREAD ATTRIBUTES
+
+// const Button = ({ type, children, ...buttonProps }) => {
+//   const className = type === "primary" ? "PrimaryButton" : "SecondaryButton";
+//   return {
+//     <button className={}>
+//     {children}
+//     </button>
+//   }
+// }
+
+//LIVE ORDERS LIST
+function LiveOrdersList() {
+  const [orders, setOrders] = useState([]);
+
+  useEffect(() => {
+    const handleNewOrders = () => {
+      const newOrders = DataSource.getOrders();
+      setOrders(newOrders);
+    }
+
+    DataSource.addListener(handleNewOrders);
+
+    return() => {
+      DataSource.removeListener(handleNewOrders)
+    };
+  },[]);
+
+  return <LiveOrders orders={orders} /> 
 }
 
-export default App;
+export default LiveOrdersList;
