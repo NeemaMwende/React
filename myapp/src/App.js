@@ -5,6 +5,7 @@
 // import './App.css';
 // import HotelApp from './HotelApp';
 // import "./App.css";
+import MyForm from "./MyForm";
 // import React from "react";
 // import { RadioGroup, RadioOption} from './Radio';
 // import useConsoleLog from "./useConsoleLog";
@@ -20,8 +21,8 @@
 //     <div className="App">
 
 // import RenderProps from "./RenderProps";
-import Comparison from "./Comparison"
-import MouseRender from "./MouseRender"
+// import Comparison from "./Comparison"
+// import MouseRender from "./MouseRender"
 
 // const { useState, useEffect } = require("react");
 
@@ -899,8 +900,9 @@ import MouseRender from "./MouseRender"
 const App = () => {
   return ( 
     <>
-    <Comparison />
-    <MouseRender />
+    {/* <Comparison />
+    <MouseRender /> */}
+    <MyForm />
     </>
    );
 }
