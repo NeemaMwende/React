@@ -19,6 +19,25 @@ function LiveOrdersList() {
     };
   }, []);
 
+  useEffect(() => {
+    const fetchOrders = async () => {
+      try {
+        const fetchedOrders = await DataSource.getOrders();
+        setOrders(fetchedOrders);
+      } catch (error) {
+        console.error('Error fetching orders:', error);
+      }
+    };
+
+    fetchOrders(); // Call the fetchOrders function when the component mounts
+
+    // Cleanup function
+    return () => {
+      // Perform cleanup if necessary
+    };
+  }, []); // Empty dependency array means this effect runs only once, on mount
+
+
   return <LiveOrders orders={orders} />;
 }
 
