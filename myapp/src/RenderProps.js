@@ -32,3 +32,15 @@ const DrinksCount = () => {
         />
     )
 };
+
+function RenderProps() {
+    return(
+        <div className="RenderProps">
+            <header className="Header">Little Lemon Restaurant</header>
+                <DessertsCount />
+                <DrinksCount />
+        </div>
+    );
+}
+
+export default RenderProps;
