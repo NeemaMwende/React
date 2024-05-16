@@ -1,7 +1,7 @@
 // import logo from './logo.svg';
 // import React from 'react';
 // import LiveOrdersList from './LiveOrdersList';
-
+// import HOC from "./HOC"
 // import './App.css';
 // import HotelApp from './HotelApp';
 // import "./App.css";
@@ -12,7 +12,7 @@
 // import { useState, useEffect, useRef } from "react";
 // import { ThemeProvider, useTheme } from "./ThemeContext";
 // import Switch from "./Switch";
-import { useState, useEffect }from 'react'
+// import { useState, useEffect }from 'react'
 // import { ToastContainer, toast } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
 // function App() {
@@ -890,72 +890,4 @@ import { useState, useEffect }from 'react'
 // }
 
 // export default App;
-
-
-//HOC FOR CURSOR POSITION
-
-const withMousePosition = (WrappedComponent) => {
-  return (props) => {
-
-    const [mousePosition, setMousePosition] = useState({
-      x: 0,
-      y: 0,
-    });
-
-    useEffect(() => {
-      const handleMousePositionChange = (e) => {
-        setMousePosition({
-          x: e.clientX,
-          y: e.clientY,
-        })
-      }; 
-
-      window.addEventListener("mousemove", handleMousePositionChange);
-
-      //clean up
-      return () => {
-        window.removeEventListener("mousemove", handleMousePositionChange);
-      }
-    },[]);
-
-    return <WrappedComponent {...props} mousePosition={mousePosition} />
-  }
-}
-
-const PanelMouseLogger = ({mousePosition}) => {
-  if (!mousePosition) {
-    return null;
-  }
-  return (
-    <div>
-      <p>Mouse Poistion:</p>
-      <div className="Row">
-        <span>x: {mousePosition.x}</span>
-        <span>y: {mousePosition.y}</span>
-      </div>
-    </div>
-  );
-}
-
-const PointMouseLogger = ({mousePosition}) => {
-  if (!mousePosition) {
-    return null;
-  }
-  return(
-    <p>
-      ({mousePosition.x}, {mousePosition.y})
-    </p>
-  );
-};
-
-function App(){
-  return(
-    <div>
-      <header className="Header">Little Lemon Restaurant</header>
-      <PanelMouseLogger />
-      <PointMouseLogger />
-    </div>
-  );
-}
-
-export default App;
+{/* <HOC /> */}
