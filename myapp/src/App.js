@@ -21,6 +21,7 @@
 
 // import RenderProps from "./RenderProps";
 import Comparison from "./Comparison"
+import MouseRender from "./MouseRender"
 
 // const { useState, useEffect } = require("react");
 
@@ -899,6 +900,7 @@ const App = () => {
   return ( 
     <>
     <Comparison />
+    <MouseRender />
     </>
    );
 }
