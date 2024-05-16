@@ -19,6 +19,9 @@
 //   return (
 //     <div className="App">
 
+// import RenderProps from "./RenderProps";
+import Comparison from "./Comparison"
+
 // const { useState, useEffect } = require("react");
 
 // const { Children } = require("react");
@@ -891,3 +894,13 @@
 
 // export default App;
 {/* <HOC /> */}
+{/* <RenderProps /> */}
+const App = () => {
+  return ( 
+    <>
+    <Comparison />
+    </>
+   );
+}
+ 
+export default App;
