@@ -5,8 +5,8 @@
 // import './App.css';
 // import HotelApp from './HotelApp';
 // import "./App.css";
-import MyForm from "./MyForm";
-import FeedbackForm from "./FeedbackForm"
+// import MyForm from "./MyForm";
+// import FeedbackForm from "./FeedbackForm"
 // import React from "react";
 // import { RadioGroup, RadioOption} from './Radio';
 // import useConsoleLog from "./useConsoleLog";
@@ -802,15 +802,15 @@ import FeedbackForm from "./FeedbackForm"
 // export default App;
 {/* <HOC /> */}
 {/* <RenderProps /> */}
-const App = () => {
-  return ( 
-    <>
-    {/* <Comparison />
-    <MouseRender /> */}
-    <MyForm />
-    <FeedbackForm />
-    </>
-   );
-}
+// const App = () => {
+//   return ( 
+//     <>
+//     {/* <Comparison />
+//     <MouseRender /> */}
+//     <MyForm />
+//     <FeedbackForm />
+//     </>
+//    );
+// }
  
-export default App;
+// export default App;
