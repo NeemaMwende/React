@@ -6,7 +6,7 @@
 // import HotelApp from './HotelApp';
 // import "./App.css";
 import MyForm from "./MyForm";
-// import FeedbackForm from "./FeedbackForm"
+import FeedbackForm from "./FeedbackForm"
 // import React from "react";
 // import { RadioGroup, RadioOption} from './Radio';
 // import useConsoleLog from "./useConsoleLog";
@@ -808,7 +808,7 @@ const App = () => {
     {/* <Comparison />
     <MouseRender /> */}
     <MyForm />
-    {/* <FeedbackForm /> */}
+    <FeedbackForm />
     </>
    );
 }

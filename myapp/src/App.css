@@ -157,22 +157,37 @@ button[disabled] {
 
 
 /* ANOTHER NEW CODE  */
+
+/* FEEDBACK FORM CODE */
 .App {
-  display: flex;
   padding: 16px;
-  flex-direction: column;
-  min-height: 100vh;
+  width: 400px;
 }
 
-header {
-  position: relative;
+fieldset {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-right: 8px;
+}
+
+.Field {
+  padding-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.Row {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
 }
 
-.Page {
-  max-width: 1280px;
-  margin: 0 auto;
+label {
+  margin-bottom: 16px;
+}
+
+textarea {
+  height: 100px;
 }
